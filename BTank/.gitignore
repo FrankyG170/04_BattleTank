@@ -1,4 +1,5 @@
 *.VC.db
+BTank/Content/StarterContent
 
 # Visual Studio 2015 user specific files
 .vs/
@@ -44,6 +45,7 @@
 # Precompiled Assets
 SourceArt/**/*.png
 SourceArt/**/*.tga
+
 
 # Binary Files
 Binaries/*
