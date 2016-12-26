@@ -13,7 +13,7 @@ void ATankAIController::BeginPlay()
 	if (!PlayerTank) {
 		UE_LOG(LogTemp, Warning, TEXT("AIController cant find player tank"));
 	} else {
-		UE_LOG(LogTemp, Warning, TEXT("AIController found player: %s"), *(PlayerTank->GetName()));
+		// UE_LOG(LogTemp, Warning, TEXT("AIController found player: %s"), *(PlayerTank->GetName()));
 	}
 }
 
