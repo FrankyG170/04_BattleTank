@@ -24,7 +24,7 @@ void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
 	if (!Barrel) { return; } // If no barrel is found then return void
-
+	
 	FVector OutLaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile")); // Using Barrel socket for fire start location
 	bool bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity
@@ -34,9 +34,12 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 								StartLocation,
 								HitLocation,
 								LaunchSpeed,
+								false,
+								0,
+								0,
 								ESuggestProjVelocityTraceOption::DoNotTrace
 							);
-
+	
 	// If a projectile velocity can be suggested
 	if (bHaveAimSolution)
 	{	// Calculate the OutLaunchVelocity
@@ -52,6 +55,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDireciton)
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDireciton.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
-
+	
 	Barrel->Elevate(5); // TODO remove magic number
 }
