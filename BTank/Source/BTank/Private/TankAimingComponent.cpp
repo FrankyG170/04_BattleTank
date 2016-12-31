@@ -12,7 +12,6 @@ UTankAimingComponent::UTankAimingComponent()
 	// off to improve performance if you don't need them.
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
-
 	// ...
 }
 
@@ -56,5 +55,5 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDireciton)
 	auto AimAsRotator = AimDireciton.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	
-	Barrel->Elevate(5); // TODO remove magic number
+	Barrel->Elevate(DeltaRotator.Pitch); // TODO remove magic number
 }
